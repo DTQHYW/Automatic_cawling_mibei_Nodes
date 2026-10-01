@@ -16,7 +16,13 @@ settings:
 #   - clash    : Clash YAML 配置文件
 #   - raw_text : 纯文本，每行一个节点 URI
 sources:
-  # 米贝相关公开订阅源（示例，请按实际情况替换）
+  # 主要订阅源：yy1588133 的公开代理池
+  - name: "proxy-pool-v2ray"
+    url: "https://gh-proxy.com/raw.githubusercontent.com/yy1588133/proxy-pool/main/v2ray.txt"
+    type: "base64"
+    enabled: true
+
+  # 备用订阅源（需要时启用）
   - name: "mibei-base64"
     url: "https://example.com/mibei/subscribe/base64"
     type: "base64"
@@ -25,16 +31,6 @@ sources:
     url: "https://example.com/mibei/subscribe/clash"
     type: "clash"
     enabled: false
-
-  # 公共订阅源示例（启用状态）
-  - name: "public-clash"
-    url: "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/all.yaml"
-    type: "clash"
-    enabled: true
-  - name: "public-base64"
-    url: "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/base64.txt"
-    type: "base64"
-    enabled: true
 
 # 输出文件配置
 output:
