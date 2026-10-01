@@ -1,0 +1,67 @@
+settings:
+  # 检查间隔（秒），守护进程模式下使用
+  check_interval: 3600
+  # HTTP 请求超时（秒）
+  timeout: 30
+  # 最大重试次数
+  max_retries: 3
+  # 输出目录
+  output_dir: "subscriptions"
+  # 日志目录
+  logs_dir: "logs"
+
+# 订阅源配置
+# 支持类型：
+#   - base64   : 标准 Base64 订阅（一行或多行 base64 编码的节点 URI）
+#   - clash    : Clash YAML 配置文件
+#   - raw_text : 纯文本，每行一个节点 URI
+sources:
+  # 米贝相关公开订阅源（示例，请按实际情况替换）
+  - name: "mibei-base64"
+    url: "https://example.com/mibei/subscribe/base64"
+    type: "base64"
+    enabled: false
+  - name: "mibei-clash"
+    url: "https://example.com/mibei/subscribe/clash"
+    type: "clash"
+    enabled: false
+
+  # 公共订阅源示例（启用状态）
+  - name: "public-clash"
+    url: "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/all.yaml"
+    type: "clash"
+    enabled: true
+  - name: "public-base64"
+    url: "https://raw.githubusercontent.com/kooker/FreeSubsCheck/main/base64.txt"
+    type: "base64"
+    enabled: true
+
+# 输出文件配置
+output:
+  base64: "subscriptions/base64.txt"
+  clash: "subscriptions/clash.yaml"
+
+# 节点过滤与去重
+filter:
+  # 是否启用去重（基于地址+端口+协议）
+  deduplicate: true
+  # 节点名称统一后缀
+  name_suffix: "udptoos.com"
+
+# 通知配置（可选）
+notification:
+  email:
+    enabled: false
+    smtp_server: "smtp.example.com"
+    smtp_port: 587
+    username: ""
+    password: ""
+    sender: "your@email.com"
+    recipient: "your@email.com"
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+  wechat:
+    enabled: false
+    webhook_url: ""

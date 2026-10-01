@@ -1,0 +1,24 @@
+settings:
+  check_interval: 3600
+  timeout: 30
+  max_retries: 3
+  output_dir: "subscriptions"
+  logs_dir: "logs"
+
+sources:
+  - name: "local-test"
+    url: "file://test_sub.txt"
+    type: "raw_text"
+    enabled: true
+
+output:
+  base64: "subscriptions/base64.txt"
+  clash: "subscriptions/clash.yaml"
+
+filter:
+  deduplicate: true
+  name_suffix: "udptoos.com"
+
+notification:
+  email:
+    enabled: false
